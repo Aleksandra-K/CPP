@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-	cout << " Enter your code pls STRICTLY from 3 figures" << endl;
+	cout << " Enter your code (3 figures only)" << endl;
 
 	int x1, x2, x3;
 	cout << " Enter the first figure: ";
