@@ -1,0 +1,10 @@
+#include <iostream> //консольный ввод-вывод
+int main()
+{
+	bool x, y, z;
+	std::cin >> x >> y;
+	z = (((x) && (y)) || (!(x) && !(y))) ? 0 : 1;
+	std::cout << z;
+	system("pause");
+	return 0;
+}
