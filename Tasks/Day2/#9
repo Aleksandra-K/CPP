@@ -1,0 +1,64 @@
+#include <iostream>
+#include <ctime>
+
+void createRandom(int n, int** arr)
+{
+	std::srand(std::time(0));
+	int nsquare = n*n;
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			arr[i][j] = rand() % nsquare;
+		}
+	}
+}
+
+void print(int n, int ** arr)
+{
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			std::cout << arr[i][j] << " ";
+		}
+		std::cout << "\n";
+	}
+}
+
+bool isMagic(int n, int** arr)
+{
+	int sumMain = 0, sumExtr = 0;
+	for (int i = 1; i < n; i++)
+	{
+		for (int j = 0; j < i; j++)
+			sumMain += arr[i][j];
+	}
+
+	for (int i = 1; i < n; i++)
+	{
+		for (int j = 0; j < i; j++)
+			sumExtr += arr[i][n-j-1];
+	}
+//	std::cout << sumMain << " " << sumExtr << std::endl;
+	return sumMain > sumExtr;
+}
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	int n;
+	std::cin >> n;
+	int** arr = new int*[n];
+	for (int i = 0; i < n; i++)
+		arr[i] = new int[n];
+	
+	createRandom(n, arr);
+
+	print(n, arr);
+
+	std::cout << "Матрица Волшебная? " << isMagic(n, arr);
+
+	system("pause");
+	return 0;
+}
