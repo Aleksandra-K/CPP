@@ -1,0 +1,54 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	cout << " Enter your code pls STRICTLY from 3 figures" << endl;
+
+	int x1, x2, x3;
+	cout << " Enter the first figure: ";
+	cin >> x1;
+	cout << " Enter the second figure: ";
+	cin >> x2;
+	cout << " Enter the third figure: ";
+	cin >> x3;
+
+	int count = 0;
+	int a1, b1, c1;
+
+	bool code_flag = false;
+
+	for (int a = 0; a < 10; a++)
+	{
+		if (code_flag)
+			break;
+
+		for (int b = 0; b < 10; b++)
+		{
+			if (code_flag)
+				break;
+
+			for (int c = 0; c < 10; c++)
+			{
+				if (a == x1 && b == x2 && c == x3)
+				{
+					a1 = a;
+					b1 = b;
+					c1 = c;
+					code_flag = true;
+					break;
+
+				}
+				count++;
+			}
+		}
+	}
+	
+	cout << " code = " << a1 << b1 << c1;
+	cout << " it take " << count << " tests." << endl;
+
+	system("pause");
+    return 0;
+}
+
