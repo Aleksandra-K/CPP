@@ -1,0 +1,43 @@
+#include <fstream>
+#include <iostream>
+int main()
+{
+	//std::ifstream ifs("in.txt", std::ifstream::in);
+	int n, m;
+	std::cin >> n >> m;
+	int** graph = new int*[n];
+	for (int i = 0; i < n; i++)
+		graph[i] = new int[n];
+	
+	for (int i = 0; i < n; i++)
+	for (int j = 0; j < n; j++)
+		graph[i][j] = 0;
+
+	int i, j;
+	for (int ind = 0; ind < m; ind++)
+	{
+		std::cin >> i >> j;
+		graph[i-1][j-1] = graph[i-1][j-1] + 1;
+	}
+
+	for (i = 0; i < n; i++){
+		for (j = 0; j < n; j++){
+			if (graph[i][j] > 1)
+			{
+				//std::ofstream ofs("out.txt", std::ofstream::out);
+				std::cout << "YES";
+				system("pause");
+				return 0;
+			}
+		}
+	}
+//	std::ofstream ofs("out.txt", std::ofstream::out);
+	std::cout << "NO\n";
+
+	for (i = 0; i < n; i++)
+		delete[] graph[i];
+	delete[] graph;
+
+	system("pause");
+	return 0;
+}
