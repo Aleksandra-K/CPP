@@ -1,0 +1,31 @@
+#include "stdafx.h"
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int N;
+	long double result;
+	setlocale(LC_ALL, "RUS"); 
+	cout << "Введите число, факториал которого нужно найти: ";
+	cin >> N;
+
+	cout << "Факториал числа " << N;
+
+	if (N < 0) // Факториал отрицательного числа не существует
+		result = 0; 
+	if (N == 0) // Факториал 0 == 1
+		result = 1; // 
+
+	result = 1;
+	for (int i = 1; i <= N; i++)
+	{
+		result *= i;
+	}
+
+	cout << " = " << result << endl;
+
+	system("pause");
+	return 0;
+}
