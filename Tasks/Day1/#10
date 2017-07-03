@@ -1,0 +1,26 @@
+#include "stdafx.h"
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	int y, x;
+	cin >> x;
+	cin >> y;
+
+	while (x != y)
+	{
+		if (x > y)
+			x -= y;
+		else 
+			y -= x; 
+	}
+
+	cout << x << endl;
+
+	system("pause");
+	return 0;
+}
+
