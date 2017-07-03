@@ -1,0 +1,30 @@
+//#include <iostream>
+#include <fstream> // чтение и запись в файл
+#include <string>
+int main() 
+{
+	// количество элементов последовательности заранее не известно!
+	int ch;
+	std::string result = "";
+
+  // ifs - поток для чтения из файла
+	std::ifstream ifs("test.txt", std::ifstream::in);
+
+	while (ifs.good()) {
+		ifs >> ch; // читаем очередной символ
+
+		if (ch % 2 == 0)
+      // если четный, добавляем в начало строки результата
+      // обратите внимание, что не все компиляторы "знают" про команду to_string
+			result = std::to_string(ch) + " " + result;
+
+	}
+
+	ifs.close();
+
+	std::ofstream ofs("out.txt", std::ofstream::out);
+	ofs << result;
+	ofs.close();
+
+	return 0;
+}
