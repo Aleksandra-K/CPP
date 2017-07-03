@@ -1,0 +1,25 @@
+#include "stdafx.h"
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+	float x, y, u;
+	cin >> x;
+	cin >> y;
+	float a = x*x + y*y;
+
+	if ((y < 0) || (a > 1) || ((x > 0) && (a < 0.3)))
+	{
+		printf("u=%f", sqrt(abs(x - 1)));  //форматированный вывод
+	}
+	else
+	{
+		printf("u=%f", x*x - 1);
+	}
+
+	cout << endl;
+	system("pause");
+	return 0;
+}
