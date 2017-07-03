@@ -1,0 +1,41 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int number, copy;
+	cout << " Enter pls your value: ";
+	cin >> number;
+	copy = number;
+  
+  // подсчет количества разрядов числа
+	int k = 0;
+	while (number != 0)
+	{
+		number = number / 10;
+		k++;
+	}
+
+	bool flag = k % 2 == 0 ? false : true;
+		
+		k = k / 2;
+		while (k > 0)
+		{
+			number = number * 10 + (copy % 10);
+			copy = copy / 10;
+			k--;
+		}
+
+		if (flag)
+			copy = copy / 10;
+		
+		if (number == copy)
+			cout << " Entered number is palindrom! " << endl;
+		else
+			cout << " Enterde number is not palindrom! " << endl;
+	
+		system("pause");
+    return 0;
+}
+
