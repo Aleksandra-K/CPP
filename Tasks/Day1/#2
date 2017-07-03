@@ -1,0 +1,42 @@
+
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+	int a, b, c;
+	cout << " Initialize the A side: ";
+	cin >> a;
+	cout << " Initialize the B side: ";
+	cin >> b;
+	cout << " Initialize the C side: ";
+	cin >> c;
+  // pow - возведение в степень
+	bool is_Piftriangle = (pow(a, 2) + pow(b, 2)) == pow(c, 2) ? true :
+		((pow(a, 2) + pow(c, 2)) == pow(b, 2) ? true :
+			(pow(b, 2) + pow(c, 2)) == pow(a, 2) ? true : false);
+
+	if (!is_Piftriangle)
+	{
+		bool is_triangle = (a + b > c) ? ((a + c > b) ? ((c + b > a) ? true : false) : false) : false;
+
+		if (is_triangle)
+		{
+			double cos = (double)(pow(a, 2) + pow(b, 2) - pow(c, 2)) / (double)(2 * a * b);
+			cout << " The triangle constructed according to the sides of is a triangle with cos = " << cos << endl;
+		}
+		else
+		{
+			cout << " The triangle can not be constructed according to the sides of" << endl;
+		}
+	}
+	else
+	{
+		cout << " The triangle constructed according to the sides of a rectangular" << endl;
+	}
+
+	system("pause");
+	return 0;
+}
