@@ -1,0 +1,68 @@
+#include <iostream>
+#include <queue>
+#include <vector>
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	// n - количество вершин (людей)
+	// m - количество ребер (связей)
+
+	int n, m, x, y;
+	std::cin >> n >> m;
+
+	bool** arr = new bool*[n];
+	for (int i = 0; i < n; i++)
+		arr[i] = new bool[n];
+
+	for (int i = 0; i < n; i++)
+	for (int j = 0; j < n; j++)
+		arr[i][j] = false;
+
+	// вершины считаем, начиная с 0
+
+	for (int i = 0; i < m; i++)
+	{
+		std::cin >> x >> y;
+		arr[x][y] = true;
+		arr[y][x] = true;
+	}
+
+	std::vector<bool> used;
+	std::queue<int> queue;
+	
+	used.assign(n, false);
+
+	queue.push(0);
+	used[0] = true;
+
+	while (!queue.empty())
+	{
+		int v = queue.front();
+		queue.pop();
+		for (int i = 0; i < n; i++)
+		{
+			int w = arr[v][i];
+			if (w == false)
+				continue;
+			if (used[i])
+				continue;
+			queue.push(i);
+			used[i] = true;
+		}
+	}
+
+	
+	for (int i = 0; i < n; i++)
+	{
+		if (used[i] == false)
+		{
+			std::cout << "Познакомить нельз\n";  // граф несвязный
+			system("pause");
+			return 0;
+		}
+	}
+	std::cout << "Познакомить можно\n";  // граф связный
+	system("pause");
+	return 0;
+}
