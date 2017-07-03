@@ -1,0 +1,54 @@
+
+#include "stdafx.h"
+#include <math.h>
+#include <iostream>
+
+float circle(float); //прототипы функций
+float rectangle(float, float);
+float triangle(float, float, float);
+
+void main() 
+{
+	char ch;
+	float a, b, c;
+	printf("Круг(c), прямоугольник(r) или треугольник(t): ");
+	scanf("%c", &ch);
+
+	switch (ch) 
+	{
+	case 'c':
+		printf("Радиус: ");
+		scanf("%f", &a);
+		printf("Площадь круга %.2f\n", circle(a));
+		break;
+	case 'r':
+		printf("Длина и ширина: ");
+		scanf("%f%f", &a, &b);
+		printf("Площадь прямоугольника: %.2f\n", rectangle(a, b));
+		break;
+	case 't':
+		printf("Стороны: ");
+		scanf("%f%f%f", &a, &b, &c);
+		printf("Площадь треугольника: %.2f\n", triangle(a, b, c));
+		break;
+	}
+
+	system("pause");
+}
+
+float circle(float r)
+{
+	return 3.14159 * r * r;
+}
+
+float rectangle(float x, float y)
+{
+	return x * y;
+}
+
+float triangle(float x, float y, float z)
+{
+	float p;
+	p = (x + y + z) / 2;
+	return sqrt(p * (p - x) * (p - y) * (p - z));
+}
