@@ -1,0 +1,54 @@
+#include <iostream>
+#include <ctime>
+#include <string>
+#include <sstream>
+
+bool isIn(int x, int n, const int * arr);
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+
+	std::cout << "Введите размер массива\n";
+	int n;
+	std::cin >> n;
+
+	int * array = new int[n];
+	std::srand(std::time(0));
+	for (int i = 0; i < n; i++)
+		array[i] = rand() % 20 + 1;
+
+	while (true)
+	{
+		std::cout << "\nВведите число от 1 до 20 \n";
+		std::cout << "Для выхода нажмите Q\n";
+		
+		std::string inp;
+		std::getline(std::cin, inp);
+		if (inp == "Q" || inp == "q" || inp == "Й" || inp == "й") // вдруг включена русская раскладка
+			break;
+
+		if (inp == "")
+			continue;
+
+		int x;
+		std::istringstream ss(inp);
+		ss >> x;
+
+		if (isIn(x, n, array))
+			std::cout << "Массив содержит элемент " << x << std::endl;
+		else
+			std::cout << "Массив не содержит элемент " << x << std::endl;
+	}
+	system("pause");
+	return 0;
+}
+
+bool isIn(int x, int n, const int * arr)
+{
+	for (int i = 0; i < n; i++)
+	    if (arr[i] == x)
+			return true;
+
+	return false;
+}
