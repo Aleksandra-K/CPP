@@ -1,0 +1,22 @@
+#include <iostream>
+
+//объявление функции
+int factorial (int n);
+
+int main() {
+    setlocale(LC_ALL, "Rus");
+    int n;
+    std::cin >> n;
+    int result = factorial(n);
+
+    std:: cout << "Факториал числа " << n << " = " << result;
+    return 0;
+}
+
+int factorial (int n)
+{
+    if (n == 0 || n == 1)
+        return 1;
+
+    return n * factorial(n-1);
+}
